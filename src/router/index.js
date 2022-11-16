@@ -14,31 +14,31 @@ export const constantRoutes = [
   },
   {
     path: '/login',
+    name: 'login',
     component: () => import('@/views/login'),
     hidden: true
   },
-  // {
-  //   path: '/user',
-  //   component: () => import('@/views/user'),
-  //   hidden: true
-  // },
   {
     path: '/burnerlist',
+    name: 'burnerlist',
     component: () => import('@/views/burner_list'),
     hidden: true
   },
   {
     path: '/potlist',
+    name: 'potlist',
     component: () => import('@/views/pot_list'),
     hidden: true
   },
   {
     path: '/potdetail',
+    name: 'potdetail',
     component: () => import('@/views/pot_detail'),
     hidden: true
   },
   {
     path: '/404',
+    name: '404',
     component: () => import('@/views/404'),
     hidden: true
   },

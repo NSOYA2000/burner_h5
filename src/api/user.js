@@ -88,3 +88,12 @@ export function getChamberList(data) {
     data
   })
 }
+
+// 查询图表
+export function getChartData(data) {
+  return request({
+    url: '/furncae-data/company/furncae/chamber/detail/info',
+    method: 'post',
+    data
+  })
+}

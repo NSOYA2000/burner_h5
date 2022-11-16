@@ -1,5 +1,5 @@
 {
-  "name": "burner-web",
+  "name": "burner-h5",
   "version": "4.4.0",
   "description": "A vue admin template with Element UI & axios & iconfont & permission control & lint",
   "author": "mei yang",
@@ -46,7 +46,7 @@
     "babel-plugin-dynamic-import-node": "2.3.3",
     "chalk": "2.4.2",
     "connect": "3.6.6",
-    "echarts": "^4.9.0",
+    "echarts": "^5.3.2",
     "eslint": "6.7.2",
     "eslint-plugin-vue": "6.2.2",
     "html-webpack-plugin": "3.2.0",

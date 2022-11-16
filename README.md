@@ -1,4 +1,4 @@
-# burner-web
+# burner-h5
 
 ## Build Setup
 
@@ -6,7 +6,7 @@
 # clone the project
 
 # enter the project directory
-cd burner-web
+cd burner-h5
 
 # install dependency
 yarn install

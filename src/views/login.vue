@@ -217,7 +217,8 @@ export default {
   overflow: hidden;
 }
 .login-form {
-  width: 90%;
+  /* width: 90%; */
+  width: 350px;
   margin: 30vh auto;
 }
 .login-btn {
