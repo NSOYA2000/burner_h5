@@ -31,6 +31,12 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('@/views/dashboard'),
+    hidden: true
+  },
+  {
     path: '/potdetail',
     name: 'potdetail',
     component: () => import('@/views/pot_detail'),
