@@ -57,7 +57,7 @@
                   type="success"
                   class="detail-btn"
                   @click="gotoPotList(item, index, 'dashboard')"
-                >查看PC纵览</el-button>
+                >查看PC总览</el-button>
               </el-row>
             </div>
           </div>
