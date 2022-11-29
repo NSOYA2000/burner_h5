@@ -47,11 +47,18 @@
                 </div>
               </div>
 
-              <el-button
-                type="success"
-                class="detail-btn"
-                @click="gotoPotList(item, index)"
-              >查看详情</el-button>
+              <el-row type="flex" justify="start" class="create-row">
+                <el-button
+                  type="success"
+                  class="detail-btn"
+                  @click="gotoPotList(item, index, 'potlist')"
+                >查看详情</el-button>
+                <el-button
+                  type="success"
+                  class="detail-btn"
+                  @click="gotoPotList(item, index, 'dashboard')"
+                >查看PC纵览</el-button>
+              </el-row>
             </div>
           </div>
         </Collapse>
@@ -79,14 +86,24 @@ export default {
     this.getFurncaeListFun()
   },
   methods: {
-    gotoPotList(item, index) {
-      this.$router.push({
-        path: '/potlist',
-        query: {
-          companyCode: this.$route.query.companyCode,
-          furncaeNum: item['furncaeNum']
-        }
-      })
+    gotoPotList(item, index, type) {
+      if (type == 'dashboard') {
+        this.$router.push({
+          path: '/dashboard',
+          query: {
+            companyCode: this.$route.query.companyCode,
+            furncaeNum: item['furncaeNum']
+          }
+        })
+      } else {
+        this.$router.push({
+          path: '/potlist',
+          query: {
+            companyCode: this.$route.query.companyCode,
+            furncaeNum: item['furncaeNum']
+          }
+        })
+      }
     },
     collapse(item, index) {
       if (item.iscollapse == true) {
@@ -236,8 +253,8 @@ export default {
   }
   .detail-btn {
     display: block;
-    width: 90%;
-    margin: 0 auto;
+    width: 45%;
+    margin: 20px auto;
   }
 }
 .normal {

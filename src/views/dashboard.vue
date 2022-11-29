@@ -1,6 +1,21 @@
 <template>
   <div class="dashboard">
     <el-row :gutter="50">
+      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="dashboard-item">
+        <p class="title">总览</p>
+        <div class="furncae-data">
+          <div
+            v-for="(item, index) in furncaeData"
+            :key="index"
+            class="furncae-data-item"
+          >
+            <span class="furncae-title">{{ item["title"] }}:</span>
+            <span
+              class="furncae-value"
+              :class="[item['warningFlag'] ? 'warn' : 'normal']"
+            >{{ item["value"] }} {{ item["unit"] }}</span>
+          </div>
+        </div></el-col>
       <el-col
         v-for="(item, index) in bigArray"
         :key="index"
@@ -52,12 +67,12 @@ export default {
       transTitle: ['', '锅炉1', '学生2', '学生3'], // transTitle 该标题为转化后的标题, 注意多一列,  因为原来的标题变成了竖着显示了, 所以多一列标题, 第一个为空即可
       transData: [],
       fullscreenLoading: false,
-      bigArray: []
+      bigArray: [],
+      furncaeData: []
     }
   },
   created() {
     this.getChamberListFun()
-    console.log(this.fenge([1, 1, 1, 1, 1, 1, 1], 2))
   },
   methods: {
     // 获取list
@@ -66,7 +81,8 @@ export default {
       this.showFullScreenLoading()
       var params = {
         companyCode: this.$route.query.companyCode,
-        furncaeNum: this.$route.query.furncaeNum
+        furncaeNum: this.$route.query.furncaeNum,
+        showFurncaeData: true
       }
       getChamberList(params)
         .then(res => {
@@ -74,21 +90,7 @@ export default {
           if (res['success']) {
             // console.error(res)
             var data = res['data']
-            // for (var key in data['headers']) {
-            //   this.originTitle.push(key)
-            // }
-            // for (var i = 0; i < data['dataList'].length; i++) {
-            //   this.transTitle.push(
-            //     `燃烧罐-${data['dataList'][i]['explosionChamber']}`
-            //   )
-            // }
-
-            // for (var i = 0; i < data["dataList"].length; i++) {
-            //   // this.bigArray.push({
-            //   //   headers: ["二层温度", "二层负压", "八层温度"]
-            //   // });
-
-            // }
+            this.furncaeData = data['furncaeData']['valueList']
             var fengeArray = this.fenge(data['dataList'], 4)
             console.log(fengeArray)
             for (var i = 0; i < fengeArray.length; i++) {
@@ -151,6 +153,30 @@ export default {
   .el-row {
     margin: 0 !important;
   }
+}
+.furncae-data {
+  height: 268px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  .furncae-data-item {
+    display: flex;
+    width: 50%;
+    font-size: 14px;
+    color: #333;
+    .furncae-title {
+      display: block;
+      width: 45%;
+    }
+  }
+}
+.normal {
+  color: rgba(18, 207, 120, 1);
+}
+.warn {
+  color: #fa4338;
 }
 @media screen and (max-width: 768px) {
   .dashboard {
